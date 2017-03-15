@@ -34,6 +34,7 @@ input.main-input-box:focus {
 }
 
 .drawer-container {
+  padding: 20px;
   overflow: hidden;
   position: relative;
 }

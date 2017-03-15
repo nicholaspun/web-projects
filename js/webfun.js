@@ -5,15 +5,13 @@
     .module('webfun')
     .controller('MainController', MainController);
 
-    MainController.$inject = ["$scope", "$timeout", "searchService", "$state"];
+    MainController.$inject = ["$scope", "$timeout", "$state"];
 
-  function MainController($scope, $timeout, searchService, $state){
+  function MainController($scope, $timeout, $state){
 
     var vm = this;
 
     vm.inputStr = null;
-    vm.output = null;
-
     vm.toggle = 0;
     vm.searching = false;
 
@@ -22,14 +20,33 @@
       var searchItem = vm.inputStr.toLowerCase();
       vm.toggle = 0;
       $timeout(function() {
-        vm.output = searchService.getReturnStr(searchItem);
-        vm.toggle = vm.output ? 1 : 0;
+        if (doesStateExist(searchItem)) {
+          $state.go(searchItem);
+          $timeout(function() {
+            vm.toggle = 1;
+          }, 115)
+        }
         vm.searching = false;
       }, 300);
     }
 
-    $state.go('contacts');
+    function doesStateExist(stateName) {
+      if (stateName === "") return false;
+      var allStates = $state.get().map( function(e){ return e.name; });
+      return allStates.includes(stateName);
+    }
 
+
+    // Runs on load --> Intro Text
+    $scope.$watch('vm.introText', function() {
+      Typed.new('[placeholder]', {
+        strings: ["Welcome!"],
+        typeSpeed: 0
+      });
+      $timeout(function() {
+        vm.toggle = 2;
+      }, 1000);
+    })
   }
 
 })();
