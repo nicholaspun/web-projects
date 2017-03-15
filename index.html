@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="dependencies/angular-ui-router.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/searchService.js"></script>
+  <script src="js/webfun.js"></script>
+
+
+  <!--Styles-->
+  <link rel="stylesheet" href="webfun.css">
+</head>
+
+<body ng-app="webfun">
+
+  <div ng-controller="MainController as ctrl">
+    <div class="outer-container">
+      <h1>Hello World!</h1>
+      <form ng-submit="ctrl.search()">
+        <input ng-model="ctrl.inputStr" class="main-input-box" type="text" ng-disabled="ctrl.searching" />
+      </form>
+
+      <!-- Loading Spinner -->
+      <!-- <div ng-show="ctrl.toggle !== 1" style="padding: 20px">
+        <md-progress-circular style="position: absolute; left: 50%;" md-mode="indeterminate"></md-progress-circular>
+      </div> -->
+
+
+      <div class="drawer-container">
+        <p ng-show="ctrl.toggle===1 " class="drawer animate-show-hide ">
+          {{ctrl.output}}
+        </p>
+      </div>
+      <div ui-view></div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>

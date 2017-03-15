@@ -1,0 +1,44 @@
+.outer-container {
+  display: block;
+  margin: auto;
+  width: 80%;
+  margin-top: 50px;
+}
+
+.main-input-box {
+  width: 100%;
+  height: 100;
+  font-size: 60px;
+  border: none;
+  box-sizing: border-box;
+  padding: 20px;
+  -webkit-box-shadow: -4px 7px 33px -6px rgba(181,181,181,1);
+  -moz-box-shadow: -4px 7px 33px -6px rgba(181,181,181,1);
+  box-shadow: -4px 7px 33px -6px rgba(181,181,181,1);
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+input.main-input-box:focus {
+  outline: none;
+}
+
+.animate-show-hide.ng-hide {
+  transform: translate(0, -100%);
+}
+
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove {
+  transition: all linear 0.3s;
+}
+
+.drawer-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.drawer {
+  height: auto;
+  transform: translate(0, 0%);
+}
