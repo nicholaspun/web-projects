@@ -20,5 +20,8 @@ webfun.config(["$stateProvider", function($stateProvider) {
   .state('resume', {
     templateUrl: "./stateTemplates/resume.html"
   })
+  .state('github', {
+    templateUrl: "./stateTemplates/github.html"
+  })
 
 }]);
