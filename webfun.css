@@ -43,3 +43,7 @@ input.main-input-box:focus {
   height: auto;
   transform: translate(0, 0%);
 }
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}

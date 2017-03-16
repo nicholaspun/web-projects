@@ -37,7 +37,12 @@
         </div>
         <!-- Search Bar -->
         <form ng-submit="ctrl.search()">
-          <input ng-model="ctrl.inputStr" class="main-input-box" type="text" ng-disabled="ctrl.searching" placeholder="" ng-init="ctrl.introText = 1;" />
+          <input list="basicCommandsList" ng-model="ctrl.inputStr" class="main-input-box"
+                 type="text" ng-disabled="ctrl.searching" placeholder="" ng-init="ctrl.introText = 1;"
+                 ng-click="ctrl.erase()" />
+          <datalist id="basicCommandsList">
+            <option ng-repeat="i in ctrl.basicCommands" value="{{i}}"></option>
+          </datalist>
         </form>
       </div>
 

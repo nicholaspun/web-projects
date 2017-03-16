@@ -15,6 +15,8 @@
     vm.toggle = 0;
     vm.searching = false;
 
+    vm.basicCommands = ["resume", "about me", "contact nick"].sort();
+
     vm.search = function() {
       vm.searching = true;
       var searchItem = vm.inputStr.toLowerCase();
@@ -28,6 +30,10 @@
         }
         vm.searching = false;
       }, 300);
+    }
+
+    vm.erase = function() {
+      vm.inputStr = "";
     }
 
     function doesStateExist(stateName) {
