@@ -1,11 +1,17 @@
 {
-  "name": "temp-name",
+  "name": "500px-manager",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://nicholaspun.github.io/500px-manager",
   "dependencies": {
+    "lodash": "^4.17.4",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "react-router-dom": "^4.0.0",
+    "react-router-redux": "^4.0.8",
+    "react-stack-grid": "^0.1.2",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "gh-pages": "^0.12.0",
@@ -16,7 +22,6 @@
   "scripts": {
     "build-css": "node-sass src/ -o src/",
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
-    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
