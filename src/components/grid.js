@@ -9,7 +9,7 @@ export default class Grid extends Component {
   }
 
   renderItems(num) {
-    return [...Array(num)].map((x, i) => <Image key={i} imageKey={i} width={this.gridWidth}/>)
+    return [...Array(num)].map((x, i) => <Image key={i} imageKey={(i % 10) + 1} width={this.gridWidth}/>)
   }
 
   render() {
@@ -18,8 +18,8 @@ export default class Grid extends Component {
         columnWidth={this.gridWidth}
         monitorImagesLoaded={true}
         gutterWidth={3}
-        gutterHeight={3}>
-        {this.renderItems(20)}
+        gutterHeight={1}>
+        {this.renderItems(100)}
       </StackGrid>
     );
   }
