@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
+import Carousel from "./carousel"
 
 export default class Grid extends Component {
   render() {
     var style = {
-      margin: 0, 
-      textColor: "white",
+      margin: 0,
+      display: 'inline',
+      alignItems: 'center',
+      overflow: 'hidden'
     }
     return (
-        <h1 style={style}>Grid</h1>
+      <div style={style}>
+        <Carousel></Carousel>
+      </div>
     );
   }
 }

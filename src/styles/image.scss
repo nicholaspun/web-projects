@@ -1,5 +1,6 @@
 .container {
     position: relative;
+    overflow: hidden;
 }
 
 .image {
@@ -7,7 +8,7 @@
   display: block;
   width: 100%;
   height: auto;
-  transition: .5s ease;
+  transition: all .5s ease;
   backface-visibility: hidden;
 }
 
@@ -23,6 +24,7 @@
 
 .container:hover .image {
   opacity: 0.7;
+  transform: scale(1.1)
 }
 
 .container:hover .middle {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import img from '../data/Colors.jpg';
+import img from '../data/photo-1.jpg';
 import '../styles/image.css'
 
 export default class Grid extends Component {
@@ -20,7 +20,7 @@ export default class Grid extends Component {
              onClick={this.showNavBox}>
         </img>
         <div className="middle">
-          <div className="text">John Doe</div>
+          <div className="text">A Prickly Plant</div>
         </div>
       </div>
     );

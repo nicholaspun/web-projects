@@ -1,0 +1,17 @@
+.image-enter {
+  transform: translateX(100%);
+}
+
+.image-enter.image-enter-active {
+  transform: translateX(0%);
+  transition: transform 1s ease-in;
+}
+
+.image-leave {
+  transform: translateX(0%);
+}
+
+.image-leave.image-leave-active {
+  transform: translateX(-100%);
+  transition: transform 1s ease-in;
+}
