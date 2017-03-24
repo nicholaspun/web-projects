@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Grid from './grid';
-import Header from "./header"
+import Header from "./header";
+// import Carousel from "./carousel"
 
 
 export default class App extends Component {
@@ -10,7 +11,7 @@ export default class App extends Component {
     }
     return (
       <div style={style}>
-        <Header></Header>
+        {/*<Carousel></Carousel>*/}
         <Grid></Grid>
       </div>
     );

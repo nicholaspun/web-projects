@@ -3,8 +3,8 @@ import img from '../data/photo-1.jpg';
 import '../styles/image.css'
 
 export default class Grid extends Component {
-  showNavBox() {
-    console.log("click");
+  doSomething() {
+    
   }
 
   render() {
@@ -17,7 +17,7 @@ export default class Grid extends Component {
              style={style}
              alt="img"
              className="image"
-             onClick={this.showNavBox}>
+             onClick={this.doSomething.bind(this)}>
         </img>
         <div className="middle">
           <div className="text">A Prickly Plant</div>
