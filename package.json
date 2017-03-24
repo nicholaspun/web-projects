@@ -2,7 +2,7 @@
   "name": "500px-manager",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nicholaspun.github.io/500px-manager",
+  "homepage": "https://nicholaspun.github.io/photo-gallery",
   "dependencies": {
     "lodash": "^4.17.4",
     "material-ui": "^0.17.1",
