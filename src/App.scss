@@ -1,5 +1,18 @@
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #BC7128;
+    margin: 0;
+    padding: 0;
+    background-color: #BC7128;
+    background-color: #333;
+    background-image: url(photos/wood.jpg);
+    font-family: 'Lato', sans-serif;
+}
+button {
+    border: none;
+    padding: 12px;
+    text-align: center;
+    min-width: 100%;
+    color: #fff;
+    font-size: 1.5em;
+    background-color: #444;
+    font-family: 'Lato', sans-serif;
 }
