@@ -1,6 +1,6 @@
 # vuejs-firebase
 
-> A Vue.js project
+> A Vue.js 2 & Firebase project. Followed a great tutorial [here](https://www.youtube.com/watch?v=we4zuQIXmnw). Also see [vue-cli](https://github.com/vuejs/vue-cli), a simple CLI scaffolding for Vue.js projects.
 
 ## Build Setup
 
@@ -17,5 +17,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
