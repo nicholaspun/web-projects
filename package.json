@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://nicholaspun.github.io/photo-gallery",
   "dependencies": {
+    "imagesloaded": "^4.1.1",
     "lodash": "^4.17.4",
     "material-ui": "^0.17.1",
     "react": "^15.4.2",
@@ -17,7 +18,6 @@
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
     "redux-logger": "^3.0.0",
-    "redux-promise-middleware": "^4.2.0",
     "redux-thunk": "^2.2.0",
     "slick-carousel": "^1.6.0"
   },

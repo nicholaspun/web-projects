@@ -11,7 +11,7 @@ export const FETCH_PHOTOS_FULFILLED = 'FETCH_PHOTOS_FULFILLED';
 function receivePhotos(photo_json) {
   return {
     type: 'FETCH_PHOTOS_FULFILLED',
-    payload: photo_json.splice(0, 100),
+    payload: photo_json.photos
   }
 }
 
@@ -23,10 +23,10 @@ function receivePhotosError(err) {
   }
 }
 
-const fetchPhotos = () => {
+const fetchPhotos = (url) => {
   return dispatch => {
     dispatch(requestPhotos());
-    return fetch("https://jsonplaceholder.typicode.com/photos")
+    return fetch(url)
       .then(response => response.json())
       .then(json => dispatch(receivePhotos(json)))
       .catch(err => dispatch(receivePhotosError(err)))

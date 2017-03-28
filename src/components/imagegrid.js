@@ -23,7 +23,7 @@ export default class ImageGrid extends Component {
         columnWidth={this.gridWidth}
         monitorImagesLoaded={true}
         gutterWidth={3}
-        gutterHeight={1}>
+        gutterHeight={3}>
         {this.renderItems(100)}
       </StackGrid>
     );

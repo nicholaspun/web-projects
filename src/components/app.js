@@ -8,6 +8,8 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import fetchPhotos from "../actions/fetchphotos"
 
+const URL = "https://api.500px.com/v1/photos?feature=user&username=nicholaspun99&sort=created_at&image_size=3&consumer_key=bNMoz1dmxXDMwwn2aoJxme1sLcUdVhj2ttDXcUyO"
+
 const mapStateToProps = (state) => {
   return {
     fetching: state.fetching,
@@ -19,13 +21,13 @@ const mapStateToProps = (state) => {
 
 class Main extends Component {
  componentDidMount() {
-   this.props.dispatch(fetchPhotos())
+   this.props.dispatch(fetchPhotos(URL))
  }
 
   render() {
     const { fetching, photos } = this.props
     var style = {
-      backgroundColor: "white",
+      backgroundColor: "black",
     }
     if (fetching) {
       return (
