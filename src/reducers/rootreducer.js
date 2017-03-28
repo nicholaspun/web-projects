@@ -1,11 +1,16 @@
 import { combineReducers } from "redux";
 
 // Import reducers here:
-import photoReducer from "./photoreducer";
+import photos from "./photoreducer";
+import fetching from "./fetchingreducer";
+import fetched from "./fetchedreducer";
+import error from "./errorreducer";
 
 const rootReducer = combineReducers({
-  // reducers here:
-  photoReducer
+  photos,
+  fetching,
+  fetched,
+  error
 })
 
 export default rootReducer;
