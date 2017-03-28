@@ -18,7 +18,7 @@ export default class Carousel extends Component {
       dots: false,
       arrows: false,
       autoplay: true,
-      autoplaySpeed: 1000,
+      autoplaySpeed: 500,
       infinite: true,
     };
 

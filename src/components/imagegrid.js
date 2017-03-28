@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import StackGrid from "react-stack-grid";
+import data from "../data/mockdata";
 import Image from "./image"
 
-export default class Grid extends Component {
+export default class ImageGrid extends Component {
   constructor() {
     super();
     this.gridWidth = 250;
   }
 
   renderItems(num) {
-    return [...Array(num)].map((x, i) => <Image key={i} imageKey={(i % 10) + 1} width={this.gridWidth}/>)
+    console.log(this.props);
+    return this.props.photos.map((data, index) => {
+      return (
+        <Image key={index} width={this.gridWidth} imgData={data}/>
+      )
+    })
   }
 
   render() {
