@@ -4,11 +4,10 @@
   "description": "A Vue.js project",
   "author": "Nicholas Pun <nicholaspun99@gmail.com>",
   "private": true,
-  "homepage": "https://nicholaspun.github.io/vuejs-news-app",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "vue": "^2.2.2",
