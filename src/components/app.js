@@ -6,7 +6,8 @@ import ImageGrid from './imagegrid';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import fetchPhotos from "../actions/fetchphotos"
+import fetchPhotos from "../actions/fetchphotos";
+import img from "../data/IMG_8627.jpg"
 
 const URL = "https://api.500px.com/v1/photos?feature=user&username=nicholaspun99&sort=created_at&image_size=3&consumer_key=bNMoz1dmxXDMwwn2aoJxme1sLcUdVhj2ttDXcUyO"
 
@@ -25,20 +26,22 @@ class Main extends Component {
  }
 
   render() {
-    const { fetching, photos } = this.props
+    const { fetching, photos } = this.props;
+    console.log(img);
     var style = {
-      backgroundColor: "black",
+      backgroundSize: "cover",
+      backgroundAttachment: "fixed",
+      backgroundImage: "url(" + img + ")"
     }
-    if (fetching) {
-      return (
-        <p>Fetching ... </p>
-      )
+    var gridStyle = {
+
     }
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
         <div style={style}>
           {/*<Carousel></Carousel>*/}
-          <ImageGrid photos={photos}></ImageGrid>
+          {!fetching &&
+            <ImageGrid photos={photos}></ImageGrid>}
         </div>
       </MuiThemeProvider>
     );

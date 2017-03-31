@@ -18,14 +18,21 @@ export default class ImageGrid extends Component {
   }
 
   render() {
+    var style = {
+      width: "80%",
+      margin: "0 auto",
+      paddingTop: "300px"
+    }
     return (
-      <StackGrid
-        columnWidth={this.gridWidth}
-        monitorImagesLoaded={true}
-        gutterWidth={3}
-        gutterHeight={3}>
-        {this.renderItems(100)}
-      </StackGrid>
+      <div style={style}>
+        <StackGrid
+          columnWidth={this.gridWidth}
+          monitorImagesLoaded={true}
+          gutterWidth={3}
+          gutterHeight={3}>
+          {this.renderItems(100)}
+        </StackGrid>
+      </div>
     );
   }
 }
