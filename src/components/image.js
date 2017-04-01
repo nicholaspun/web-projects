@@ -7,10 +7,6 @@ export default class Image extends Component {
     open: false, // for Dialog Component
   };
 
-  shouldComponentUpdate(newProps, newState) {
-    return this.props.imageKey !== newProps.imageKey;  // Only rerender if fetching new images
-  }
-
   // Dialog Controllers
   handleOpen = () => {
     this.setState({open: true});
@@ -47,7 +43,7 @@ export default class Image extends Component {
       width: this.props.width
     };
     return (
-      <div>
+      <div style={{backgroundColor: "black"}}>
         <img src={image_url} style={style} alt={name}
              className="image" onClick={this.handleOpen.bind(this)}>
         </img>

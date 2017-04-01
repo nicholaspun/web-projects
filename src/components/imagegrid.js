@@ -28,7 +28,6 @@ class Grid extends Component {
     const html = document.documentElement;
     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight) - 200; // Footer Height (TODO: pass as prop)
     const windowBottom = windowHeight + window.pageYOffset;
-    console.log(windowBottom, docHeight);
     if (windowBottom >= docHeight && !this.props.fetching) {
       this.props.loadMore()
     }
@@ -56,9 +55,10 @@ class Grid extends Component {
     var style = {
       width: "80%",
       margin: "0 auto",
-      paddingTop: "300px"
+      paddingTop: "100px"
     }
     var spinner = {
+      marginTop: "10px",
       left: "50%",
       transform: "translate(-50%)"
     }

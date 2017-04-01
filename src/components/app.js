@@ -4,13 +4,12 @@ import { connect } from "react-redux";
 
 // Components
 import ImageGrid from './imagegrid';
-// import Header from "./header";
-// import Carousel from "./carousel";
 
 // Material UI
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import AppBar from 'material-ui/AppBar';
 
 // Actions
 import fetchPhotos from "../actions/fetchphotos";
@@ -77,20 +76,24 @@ class Main extends Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
         <div>
+          {/*<AppBar title="Title" iconClassNameLeft="null" style={{backgroundColor: "transparent", boxShadow: "none", textAlign: "center"}}/>*/}
           <div style={wrap}>
             <div style={main}>
-              {/*<Carousel></Carousel>*/}
+              {/* Enter Button */}
               {!this.state.showPhotos &&
                 <button onClick={this.photoInit.bind(this)}
                         style={buttonStyle}>
                         Enter!
                 </button>}
+
+              {/* Images */}
               {!fetching && this.state.showPhotos &&
                 <ImageGrid photos={photos}
                            loadMore={this.fetchPhotos.bind(this)}>
                 </ImageGrid>}
             </div>
           </div>
+          {/* Footer */}
           {this.state.showPhotos && <div style={footer}></div>}
         </div>
       </MuiThemeProvider>
