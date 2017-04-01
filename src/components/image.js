@@ -4,9 +4,14 @@ import Dialog from 'material-ui/Dialog';
 
 export default class Image extends Component {
   state = {
-    open: false,
+    open: false, // for Dialog Component
   };
 
+  shouldComponentUpdate(newProps, newState) {
+    return this.props.imageKey !== newProps.imageKey;  // Only rerender if fetching new images
+  }
+
+  // Dialog Controllers
   handleOpen = () => {
     this.setState({open: true});
   };
@@ -35,6 +40,7 @@ export default class Image extends Component {
     );
   }
 
+  // Image Controller
   renderImage() {
     const { name, image_url } = this.props.imgData;
     var style = {
@@ -42,11 +48,8 @@ export default class Image extends Component {
     };
     return (
       <div>
-        <img src={image_url}
-             style={style}
-             alt={name}
-             className="image"
-             onClick={this.handleOpen.bind(this)}>
+        <img src={image_url} style={style} alt={name}
+             className="image" onClick={this.handleOpen.bind(this)}>
         </img>
         <div className="middle">
           <div className="text">{name}</div>
@@ -56,7 +59,6 @@ export default class Image extends Component {
   }
 
   render() {
-
     return (
       <div className="container">
         {this.renderImage()}

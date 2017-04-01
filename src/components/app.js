@@ -1,47 +1,97 @@
+// React/Redux Functions
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+
+// Components
 import ImageGrid from './imagegrid';
 // import Header from "./header";
-// import Carousel from "./carousel"
+// import Carousel from "./carousel";
+
+// Material UI
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import fetchPhotos from "../actions/fetchphotos";
-import img from "../data/IMG_8627.jpg"
 
-const URL = "https://api.500px.com/v1/photos?feature=user&username=nicholaspun99&sort=created_at&image_size=3&consumer_key=bNMoz1dmxXDMwwn2aoJxme1sLcUdVhj2ttDXcUyO"
+// Actions
+import fetchPhotos from "../actions/fetchphotos";
+
+const URL = "https://api.500px.com/v1/photos?feature=user&username=nicholaspun99&sort=created_at&image_size=3&consumer_key=bNMoz1dmxXDMwwn2aoJxme1sLcUdVhj2ttDXcUyO";
+const URL_2 = "https://api.500px.com/v1/photos?feature=user&username=nicholaspun99&sort=created_at&page=2&image_size=3&consumer_key=bNMoz1dmxXDMwwn2aoJxme1sLcUdVhj2ttDXcUyO";
+
 
 const mapStateToProps = (state) => {
+  return {...state}
+}
+
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetching: state.fetching,
-    fetched: state.fetched,
-    photos: state.photos,
-    error: state.error,
+    fetchPhotos: (url) => dispatch(fetchPhotos(url)),
   }
 }
 
 class Main extends Component {
- componentDidMount() {
-   this.props.dispatch(fetchPhotos(URL))
- }
+  state = {
+    showPhotos: false,
+  }
+
+  shouldComponentUpdate(newProps, newState) {
+    return this.props.fetching;  // Only rerender if fetching new images
+  }
+
+  // API call to fetch more photos (multiple pages)
+  fetchPhotos() {
+    if (this.props.onPage < this.props.maxPages) {
+      this.props.fetchPhotos(URL_2);
+    }
+  }
+
+  // Activiated when "Enter" button clicked
+  photoInit() {
+    this.setState({showPhotos: true})
+    this.props.fetchPhotos(URL);
+  }
+
 
   render() {
     const { fetching, photos } = this.props;
-    console.log(img);
-    var style = {
-      backgroundSize: "cover",
-      backgroundAttachment: "fixed",
-      backgroundImage: "url(" + img + ")"
+    var buttonStyle = {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)"
     }
-    var gridStyle = {
-
+    var wrap = {
+      minHeight: "100vh",
+    }
+    var main = {
+      overflow: "auto",
+      paddingBottom: "130px"
+    }
+    var footer = {
+      position: "relative",
+      marginTop: "-70px",
+      height: "130px",
+      clear: "both",
+      backgroundColor: "black"
     }
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-        <div style={style}>
-          {/*<Carousel></Carousel>*/}
-          {!fetching &&
-            <ImageGrid photos={photos}></ImageGrid>}
+        <div>
+          <div style={wrap}>
+            <div style={main}>
+              {/*<Carousel></Carousel>*/}
+              {!this.state.showPhotos &&
+                <button onClick={this.photoInit.bind(this)}
+                        style={buttonStyle}>
+                        Enter!
+                </button>}
+              {!fetching && this.state.showPhotos &&
+                <ImageGrid photos={photos}
+                           loadMore={this.fetchPhotos.bind(this)}>
+                </ImageGrid>}
+            </div>
+          </div>
+          {this.state.showPhotos && <div style={footer}></div>}
         </div>
       </MuiThemeProvider>
     );
@@ -49,6 +99,6 @@ class Main extends Component {
 }
 
 // Connects state and dispatch as props to our Main component
-const App = connect(mapStateToProps)(Main);
+const App = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default App;

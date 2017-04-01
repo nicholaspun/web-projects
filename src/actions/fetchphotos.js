@@ -11,7 +11,9 @@ export const FETCH_PHOTOS_FULFILLED = 'FETCH_PHOTOS_FULFILLED';
 function receivePhotos(photo_json) {
   return {
     type: 'FETCH_PHOTOS_FULFILLED',
-    payload: photo_json.photos
+    photos: photo_json.photos,
+    current_page: photo_json.current_page,
+    total_pages: photo_json.total_pages
   }
 }
 
