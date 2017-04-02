@@ -1,5 +1,4 @@
-// React/Redux Functions
-import React, { Component } from 'react';
+// Redux Functions
 import { connect } from "react-redux";
 
 // Actions

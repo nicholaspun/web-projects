@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
 class Grid extends Component {
   constructor(props) {
     super(props);
-    this.gridWidth = 250; // TODO: make this responsive?
+    this.gridWidth = 300; // TODO: make this responsive?
     this.handleScroll = this.handleScroll.bind(this);
   }
 
@@ -45,8 +45,8 @@ class Grid extends Component {
     const { photos } = this.props;
     return photos.map((data, index) => {
       return (
-          <Image key={data.image_url} imageKey={data.image_url}
-                 width={this.gridWidth} imgData={data}/>
+          <Image key={data.image_url} width={this.gridWidth} imgData={data}
+                 renderSingleImage={this.props.renderSingleImage.bind(this)}/>
       )
     })
   }

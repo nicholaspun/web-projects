@@ -19,7 +19,7 @@ export default class Footer extends Component {
     return (
       <div style={footer}>
         <a href="https://github.com/nicholaspun">
-          <img src={img} style={imgStyle} />
+          <img src={img} alt="github logo" style={imgStyle} />
         </a>
       </div>
     );

@@ -1,39 +1,41 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FontIcon from 'material-ui/FontIcon';
-import img from "../data/IMG_8627.jpg";
-import {red500, yellow500, blue500} from 'material-ui/styles/colors';
+import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 
 export default class SingleImage extends Component {
   render () {
     var iconStyles = {
-      marginRight: 24,
+      zIndex: 100,
+      position: "absolute",
+      cursor: "pointer",
+      marginLeft: "20px",
+      marginTop: "20px"
+    }
+    var imgStyle = {
+      width: "80%",
+      margin: "0 auto",
+      display: "block",
+      minWidth:"none"
     }
     return (
-      <Card style={{width: "80%", margin: "20px auto"}}>
-        <CardHeader
-          title="URL Avatar"
-          subtitle="Subtitle"
-          avatar={img}
-        />
-        <CardMedia
-          style={{height: "50%"}}
-          overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
-        >
-          <img src={img} />
+      <Card style={{width: "80%", margin: "50px auto"}}>
+        {/* Image */}
+        <CardMedia style={{overflow: 'hidden', position: "relative"}}
+                   overlay={<CardTitle title={this.props.name} />}>
+          <FontIcon className="material-icons"
+                    style={iconStyles}
+                    onClick={this.props.renderImageGrid.bind(this)}>
+                    arrow_back
+          </FontIcon>
+          <img style={imgStyle} alt={this.props.name} src={this.props.image_url} />
         </CardMedia>
-        <CardTitle title="Card title" subtitle="Card subtitle" />
-        <CardText>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-          Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-          Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-        </CardText>
+
+        {/* Body */}
+        <CardText>{this.props.description ? this.props.description : "No Description"}</CardText>
         <CardText style={{textAlign: "center"}}>
-          <FontIcon className="material-icons" style={iconStyles}>home</FontIcon>
-          <FontIcon className="material-icons" style={iconStyles} color={red500}>flight_takeoff</FontIcon>
-          <FontIcon className="material-icons" style={iconStyles} color={yellow500}>cloud_download</FontIcon>
-          <FontIcon className="material-icons" style={iconStyles} color={blue500}>videogame_asset</FontIcon>
+          <ActionFavorite />
+          <span style={{fontSize: "18px"}}>&nbsp;{this.props.likes}</span>
         </CardText>
       </Card>
     );
