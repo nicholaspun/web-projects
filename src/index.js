@@ -1,16 +1,14 @@
 // React Components
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Redux Components
 import { Provider } from "react-redux";
-import store, { history } from "./store";
-// import { ConnectedRouter } from 'react-router-redux'
+import store from "./store";
+
 
 // Components
-import App from './components/app';
-import ImageGrid from './components/imagegrid';
+import App from './components/app'
 
 // CSS (For Body tag)
 import './index.css';
@@ -19,12 +17,10 @@ import './index.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-const Main = (
+const provider = (
   <Provider store={store}>
-    <Router history={history}>
-      <Route exact path="/" component={App} />
-    </Router>
+    <App></App>
   </Provider>
 )
 
-render(Main, document.getElementById('root'));
+render(provider, document.getElementById('root'));

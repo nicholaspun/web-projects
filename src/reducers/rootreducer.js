@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-import { routerReducer } from 'react-router-redux'
 
 // Import reducers:
 import photos from "./photoreducer";
@@ -15,8 +14,7 @@ const rootReducer = combineReducers({
   fetched,
   error,
   onPage,
-  maxPages,
-  router: routerReducer
+  maxPages
 })
 
 export default rootReducer;
