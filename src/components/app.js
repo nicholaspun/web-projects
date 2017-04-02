@@ -9,10 +9,13 @@ import ImageGrid from './imagegrid';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import AppBar from 'material-ui/AppBar';
+// import AppBar from 'material-ui/AppBar';
 
 // Actions
 import fetchPhotos from "../actions/fetchphotos";
+
+// Images
+import img from "../data/GitHub-Mark-Light-64px.png";
 
 const URL = "https://api.500px.com/v1/photos?feature=user&username=nicholaspun99&sort=created_at&image_size=3&consumer_key=bNMoz1dmxXDMwwn2aoJxme1sLcUdVhj2ttDXcUyO";
 const URL_2 = "https://api.500px.com/v1/photos?feature=user&username=nicholaspun99&sort=created_at&page=2&image_size=3&consumer_key=bNMoz1dmxXDMwwn2aoJxme1sLcUdVhj2ttDXcUyO";
@@ -71,7 +74,13 @@ class Main extends Component {
       marginTop: "-70px",
       height: "130px",
       clear: "both",
-      backgroundColor: "black"
+      backgroundColor: "transparent"
+    }
+    var imgStyle = {
+      position: "absolute",
+      margin: "20px 20px",
+      right: 0,
+      bottom: 0
     }
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
@@ -94,7 +103,12 @@ class Main extends Component {
             </div>
           </div>
           {/* Footer */}
-          {this.state.showPhotos && <div style={footer}></div>}
+          {this.state.showPhotos &&
+            <div style={footer}>
+              <a href="https://github.com/nicholaspun">
+                <img src={img} style={imgStyle} />
+              </a>
+            </div>}
         </div>
       </MuiThemeProvider>
     );
