@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import ImageGrid from './imagegrid'
+import ImageGrid from './imagegrid';
+import "../styles/body.css";
 
 export default class Body extends Component {
   render() {

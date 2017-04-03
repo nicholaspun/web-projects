@@ -9,10 +9,10 @@ export default class Image extends Component {
     };
     return (
       <div className="container">
-        <div style={{backgroundColor: "black"}}>
+        <div style={{backgroundColor: "black", cursor: "pointer"}}
+             onClick={this.props.renderSingleImage.bind(this, name, image_url, description, positive_votes_count)}>
           <img src={image_url} style={style} alt={name}
-               className="image"
-               onClick={this.props.renderSingleImage.bind(this, name, image_url, description, positive_votes_count)}>
+               className="image">
           </img>
           <div className="middle">
             <div className="text">{name}</div>
