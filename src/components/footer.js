@@ -1,5 +1,6 @@
 import React from "react";
 import img from "../data/GitHub-Mark-Light-64px.png";
+import "../styles/footer.css";
 
 const Footer = () => {
   return (
