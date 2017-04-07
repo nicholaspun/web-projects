@@ -5,9 +5,9 @@
     .module('webfun')
     .controller('MainController', MainController);
 
-    MainController.$inject = ["$scope", "$timeout", "$state"];
+    MainController.$inject = ["$scope", "$timeout", "$state", "$http"];
 
-  function MainController($scope, $timeout, $state){
+  function MainController($scope, $timeout, $state, $http){
 
     var vm = this;
 
@@ -54,5 +54,4 @@
       }, 1000);
     })
   }
-
 })();

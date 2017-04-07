@@ -30,6 +30,7 @@
     <div class="outer-container">
       <h1 style="font-weight: bold; font-size: 40pt; padding-left: 20px;">Nicholas Pun</h1>
 
+      <!-- Search -->
       <div style="position: relative; padding: 20px;">
         <!-- Spinner -->
         <div ng-show="ctrl.searching">
@@ -45,9 +46,10 @@
           </datalist>
         </form>
       </div>
+      
 
+      <!-- Content Div -->
       <div class="drawer-container">
-        <!-- Content -->
         <div ng-show="ctrl.toggle==1" class="drawer animate-show-hide" ui-view></div>
         <!-- Only shows on intial load -->
         <div ng-show="ctrl.toggle==2" class="drawer animate-show-hide" style="font-size: 16pt;">

@@ -21,6 +21,8 @@ webfun.config(["$stateProvider", function($stateProvider) {
     templateUrl: "./stateTemplates/resume.html"
   })
   .state('github', {
+    controller: 'githubController',
+    controllerAs: 'ctrl',
     templateUrl: "./stateTemplates/github.html"
   })
 
