@@ -1,9 +1,5 @@
 <template>
   <div>
-    <div class="video-grid__buttons">
-      <v-btn outline round class="red--text" v-on:click.native="changeFilter('All')">All</v-btn>
-      <v-btn outline round class="red--text" v-on:click.native="changeFilter('UWaterloo')">UWaterloo</v-btn>
-    </div>
     <v-container fluid>
       <div class="video-grid-container">
         <v-card v-for="video in visibleVideos" :key="video.url" class="video-grid__card">
@@ -33,7 +29,6 @@ export default {
   name: 'videogrid',
   data() {
     return {
-      currentFilter: "All",
       allVideos: [],
       visibleVideos: [],
     }
@@ -47,29 +42,17 @@ export default {
           newVideoDataItem.title = obj.snippet.title;
           newVideoDataItem.loaded = false;
           return newVideoDataItem;
-        })})
+        })
+      })
       .then(() => {
-        this.visibleVideos = this.allVideos;
+        this.allVideos = this.allVideos.filter((item) => {
+          return item.title.includes("aterloo");
+        })
+        this.visibleVideos = this.allVideos
       })
       .catch((err) => console.log(err))
    },
     methods: {
-      change: function(event) {
-        alert("I'm here!");
-      },
-      changeFilter: function(filter) {
-        if (filter === "All") {
-          this.visibleVideos = this.allVideos;
-          this.$nextTick(function(){}); // Manually trigger tick
-        }
-        else if (filter === "UWaterloo") {
-          var newVisibleVideos = this.allVideos.filter(function(item) {
-            return item.title.includes("aterloo")
-          })
-          this.visibleVideos = newVisibleVideos;
-          this.$nextTick(function(){}); // Manually trigger tick
-        }
-      },
       load: function(url) {
         var index = this.visibleVideos.findIndex((obj) => obj.url === url);
         this.visibleVideos[index].loaded = true;
@@ -94,9 +77,5 @@ export default {
   width: 45%;
   margin-right: 10px;
   margin-bottom: 10px;
-}
-
-.video-grid__buttons {
-  margin: 15px;
 }
 </style>
