@@ -8,8 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   context: resolve(__dirname, 'src'),
   entry: [
-    // 'eventsource-polyfill', --> no idea what this is, apparently it's useful????
-    'webpack-hot-middleware/client',
+    'webpack-hot-middleware/client?reload=true',
     './index.js'
   ],
   output: {
@@ -29,7 +28,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new ProgressBarPlugin(),
     new HtmlWebpackPlugin({ template: './index.html' }),
   ]
