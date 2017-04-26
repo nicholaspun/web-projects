@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 
 export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      message: [],
+    }
+  }
   render () {
     return (
-      <h1 style={{ textAlign: 'center'}}>
-        Hello World!
-      </h1>
+
     )
   }
 }
