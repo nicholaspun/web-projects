@@ -1,70 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class App extends Component {
-  constructor () {
-    super();
-    this.state = {
-      currentUser: null,
-      users: [],
-      messages: [],
-    }
+// Components
+import UserLogin from './components/userLogin/userLogin.component';
+import MessagingArea from './components/messagingArea/messagingArea.component';
+import UserList from './components/userList/userList.component';
+
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser,
   }
+}
 
-  componentDidMount () {
-    socket.on('new message', this._addMessage)
-    socket.on('update users', this._updateUsers)
-  }
-
-  _addMessage = (data) => {
-    this.setState({ messages: this.state.messages.concat([data])})
-  }
-
-  _updateUsers = (data) => {
-    this.setState({ users: data.users });
-  }
-
-  sendUsername = (event) => {
-    event.preventDefault();
-    this.setState({ currentUser: event.target.username.value })
-    socket.emit('add user', event.target.username.value);
-  }
-
-  sendMessage = (event) => {
-    event.preventDefault();
-    socket.emit('send message', this.state.currentUser, event.target.messageInput.value);
-    event.target.messageInput.value = '';
-  }
-
-  renderUsers = () => {
-    return this.state.users.map((u, i) => <p key={i}>{u}</p>)
-  }
-
-  renderMessages = () => {
-    return this.state.messages.map((m, i) => <p key={i}>{m.user}: {m.msg}</p>)
-  }
-
+class App extends Component {
   render () {
     return (
       <div>
-        { !this.state.currentUser ?
-          <div>
-            <form onSubmit={this.sendUsername}>
-              <input type="text" name="username"></input>
-              <input type="submit" style={{'display': 'none'}}></input>
-            </form>
-          </div> :
-          <div style={{'display': 'flex'}}>
-            <div style={{'width': '50%'}}>{this.renderUsers()}</div>
-            <div style={{'width': '50%'}}>
-              <div>{this.renderMessages()}</div>
-              <form onSubmit={this.sendMessage}>
-                <input type="text" name="messageInput"></input>
-                <input type="submit" style={{'display': 'none'}}></input>
-              </form>
-            </div>
+      { !this.props.currentUser ?
+        <UserLogin></UserLogin> :
+        <div style={{'display': 'flex'}}>
+          <div style={{'width': '50%'}}>
+            <UserList></UserList>
           </div>
-        }
+          <div style={{'width': '50%'}}>
+            <MessagingArea></MessagingArea>
+          </div>
+        </div>
+      }
       </div>
     )
   }
 }
+
+export default connect(mapStateToProps)(App);

@@ -37,7 +37,7 @@ io.on('connection', function(socket) {
 
   socket.on('add user', function(data) {
     users.push(data);
-    io.sockets.emit('update users', {users: users});
+    io.sockets.emit('update users', users);
   })
 
   socket.on('send message', function(user, msg) {
