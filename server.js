@@ -6,7 +6,7 @@ var open = require('open');
 var socket = require('socket.io');
 var http = require('http');
 
-const port = 3000;
+const port = 5555;
 const app = express();
 const server = http.Server(app);
 const io = socket(server);
@@ -30,6 +30,18 @@ server.listen(port, function(err) {
   }
 });
 
+var users = [];
+
 io.on('connection', function(socket) {
   console.log('a user connected')
+
+  socket.on('add user', function(data) {
+    users.push(data);
+    io.sockets.emit('update users', {users: users});
+  })
+
+  socket.on('send message', function(user, msg) {
+    io.sockets.emit('new message', {user: user, msg: msg});
+  })
+
 })
