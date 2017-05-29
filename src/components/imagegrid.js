@@ -45,7 +45,7 @@ class Grid extends Component {
     const { photos } = this.props;
     return photos.map((data, index) => {
       return (
-          <Image key={data.image_url} width={this.gridWidth} imgData={data}
+          <Image key={data.id} width={this.gridWidth} imgData={data}
                  renderSingleImage={this.props.renderSingleImage.bind(this)}/>
       )
     })

@@ -14,6 +14,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const URL = "https://api.500px.com/v1/photos?feature=user&username=nicholaspun99&sort=created_at&image_size=4&consumer_key=bNMoz1dmxXDMwwn2aoJxme1sLcUdVhj2ttDXcUyO";
 const URL_2 = "https://api.500px.com/v1/photos?feature=user&username=nicholaspun99&sort=created_at&page=2&image_size=4&consumer_key=bNMoz1dmxXDMwwn2aoJxme1sLcUdVhj2ttDXcUyO";
+const URL_3 = "https://api.500px.com/v1/photos?feature=user&username=nicholaspun99&sort=created_at&page=3&image_size=4&consumer_key=bNMoz1dmxXDMwwn2aoJxme1sLcUdVhj2ttDXcUyO";
 
 
 export default class Main extends Component {
@@ -41,7 +42,8 @@ export default class Main extends Component {
   // API call to fetch more photos (multiple pages)
   fetchPhotos() {
     if (this.props.onPage < this.props.maxPages) {
-      this.props.fetchPhotos(URL_2);
+      if (this.props.onPage === 1) this.props.fetchPhotos(URL_2);
+      if (this.props.onPage === 2) this.props.fetchPhotos(URL_3);
     }
   }
 
