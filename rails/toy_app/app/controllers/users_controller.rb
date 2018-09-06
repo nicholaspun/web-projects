@@ -4,13 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    puts "hello world"
-    puts User.all.class
-    User.all.each do |u|
-      puts u.name
-    end
-    puts User.all
     @users = User.all
+    debugger
   end
 
   # GET /users/1
